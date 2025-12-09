@@ -1,0 +1,31 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // Basic output settings
+    "target": "es2020",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // Node / Express friendly options
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    // Stricter type checking
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Optional: outputs and dev helpers
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false
+
+    // If you want Node types, uncomment the next two lines and install @types/node:
+    // "lib": ["esnext"],
+    // "types": ["node"]
+  },
+
+  // Only compile files in src/
+  "include": ["src"]
+}
