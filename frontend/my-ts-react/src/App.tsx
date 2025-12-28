@@ -3,9 +3,12 @@ import type { Task, TaskStatus } from "./types/Task";
 import { fetchTasks, createTask, updateTaskStatus, deleteTask } from "./api/tasks";
 import "./App.css";
 import carIcon from "./assets/car.svg"
+
 const STATUSES: TaskStatus[] = ["todo", "doing", "done"];
 
+
 function App() {
+ 
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -87,12 +90,12 @@ function App() {
             placeholder="Task title"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-          />
+            />
           <textarea
             placeholder="Description (optional)"
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
-          />
+            />
           <button type="submit">Add Task</button>
         </form>
 
@@ -100,11 +103,11 @@ function App() {
         <div className="tb-columns">
           {STATUSES.map((status) => (
             <Column
-              key={status}
-              status={status}
-              tasks={tasks.filter((t) => t.status === status)}
-              onStatusChange={handleStatusChange}
-              onDelete={handleDelete}
+            key={status}
+            status={status}
+            tasks={tasks.filter((t) => t.status === status)}
+            onStatusChange={handleStatusChange}
+            onDelete={handleDelete}
             />
           ))}
         </div>
@@ -133,13 +136,13 @@ function Column({ status, tasks, onStatusChange, onDelete }: ColumnProps) {
             <div className="tb-status-buttons">
               {(["todo", "doing", "done"] as TaskStatus[]).map((s) => (
                 <button
-                  key={s}
-                  type="button"
-                  onClick={() => onStatusChange(task.id, s)}
-                  className={
-                    "tb-status-btn" +
-                    (task.status === s ? ` tb-status-btn--${s} tb-status-btn--active` : "")
-                  }
+                key={s}
+                type="button"
+                onClick={() => onStatusChange(task.id, s)}
+                className={
+                  "tb-status-btn" +
+                  (task.status === s ? ` tb-status-btn--${s} tb-status-btn--active` : "")
+                }
                 >
                   {s}
                 </button>
@@ -149,9 +152,10 @@ function Column({ status, tasks, onStatusChange, onDelete }: ColumnProps) {
               type="button"
               onClick={() => onDelete(task.id)}
               className="tb-delete-btn"
-            >
+              >
               ✕
             </button>
+             
           </div>
         </div>
       ))}
